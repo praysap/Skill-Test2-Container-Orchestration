@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gateway-service
-        image: your-docker-username/gateway-service:latest
+        image: praysap/gateway-service:latest
         ports:
         - containerPort: 3003
         resources:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: your-docker-username/user-service:latest
+        image: praysap/user-service:latest
         ports:
         - containerPort: 3000
         resources:

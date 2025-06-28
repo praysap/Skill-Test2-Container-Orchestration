@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: your-docker-username/product-service:latest
+        image: praysap/product-service:latest
         ports:
         - containerPort: 3001
         resources:
