@@ -111,28 +111,38 @@ http://microservices.local/api/users
 ## Screenshots
 - Docker images snapshot<br>
 <img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Repository.png" /><br>
+
 - Minikube running snapshot<br>
 <img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/minikube_start.png" /><br>
+
 - Applying deployment snapshot<br>
-<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+<img  alt="image" src="https://github.com/user-attachments/assets/2da2071a-4255-4846-b92c-b9714454634a" /><br>
+
 - Applying services snapshot<br>
-<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+<img  alt="image" src="https://github.com/user-attachments/assets/927780c9-8a59-449c-b94d-0f8a56e41248" /><br>
+
 - kubectl services status snapshot<br>
-<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/kubectl-get-service.png" /><br>
+
 - kubectl pods status snapshot<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
-- Product service snaphsot<br>
-<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
-![image](https://github.com/user-attachments/assets/84aa3374-79ad-4a58-abe4-cdc2f1362de7)<br>
-- User service snaphsot<br>
-<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
-<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
-- Gateway service snaphsot<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
-- Order service snaphsot<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/kubectl-get-pods.png)<br>
+
+- minikube Product service snaphsot<br>
+<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/product-service.png" /><br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/product-output.png)<br>
+
+- minikube User service snaphsot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/user-service.png" /><br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/user-output.png" /><br>
+
+- minikube Gateway service snaphsot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/gateway-service.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/gateway-output.png)<br>
+
+- minikube Order service snaphsot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/order-service.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/order-output.png)<br>
+
 - Inter-service Communication (Inside Pod) snapshot<br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
 - (Optional) Ingress Snapshot<br>
