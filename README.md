@@ -145,7 +145,7 @@ http://microservices.local/api/users
 
 - Dokcer build and Push order Service <br><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-o.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-order.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-order.png)<br>
 
 - Dokcer build and Push product Service <br><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-p.png)<br>
@@ -153,11 +153,11 @@ http://microservices.local/api/users
 
 - Dokcer build and Push user Service <br><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-u.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-user.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-user.png)<br>
 
 - Dokcer build and Push gateway Service <br><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-g.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-gateway.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-gateway.png)<br>
 ---
 
 
