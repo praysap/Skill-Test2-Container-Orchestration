@@ -1,91 +1,150 @@
-# Skill-Test-Cloud-Containers
-# Microservices-Task
+# Microservices Deployment on Kubernetes with Minikube
+This project demonstrates how to deploy a microservices-based Node.js application using Kubernetes and Minikube. The application includes the following services:
 
-## Overview
-This document provides details on testing various services after running the `docker-compose` file. These services include User, Product, Order, and Gateway Services. Each service has its own endpoints for testing purposes.
-
+- **User Service** (Port 3000)
+- **Product Service** (Port 3001)
+- **Order Service** (Port 3002)
+- **Gateway Service** (Port 3003)
 ---
 
-## Services and Endpoints
-
-### **User Service**
-- **Base URL:** `http://107.21.154.191:3000`
-- **Endpoints:**
-  - **List Users:**  
-    ```
-    curl http://107.21.154.191:3000/users
-    ```
-    Or open in your browser: [http://107.21.154.191:3000/users](http://107.21.154.191:3000/users)
-
-    <img width="501" alt="image" src="https://github.com/user-attachments/assets/8f232bd6-f70d-4218-9537-26755ee33ced" />
-
-
+## Prerequisites
+- Docker
+- Minikube
+- kubectl
+- Docker Hub account (or another container registry)
 ---
 
-### **Product Service**
-- **Base URL:** `http://107.21.154.191:3001`
-- **Endpoints:**
-  - **List Products:**  
-    ```
-    curl http://107.21.154.191:3001/products
-    ```
-    Or open in your browser: [http://107.21.154.191:3001/products](http://107.21.154.191:3001/products)
+## Step-by-Step Instructions
+### 1. Create Dockerfile for each micorservice individually. Use below for your reference.
+```bash
+FROM node:22
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3002
+CMD [ "npm", "start" ]
+```
+Repeat for each service.
 
-    <img width="455" alt="image" src="https://github.com/user-attachments/assets/8fd78e2a-66b1-4751-8790-5b95b52bb808" />
+### 2. Build & Push Docker Images
+For each microservice (`user-service`, `product-service`, `order-service`, `gateway-service`), navigate to the folder and run:
+```bash
+cd .\Microservices\<service-folder>
+docker build -t your-dockerhub-username\<service-name>:latest .
+docker push your-dockerhub-username/<service-name>:latest
+```
+Example:
+```bash
+cd .\Microservices\user-service
+docker build -t your-dockerhub-username/user-service:latest .
+docker push your-dockerhub-username/user-service:latest
+```
+Repeat for each service.
 
+### 3. Start Minikube
+```bash
+minikube start
+```
+(Optional for Ingress):
+```bash
+minikube addons enable ingress
+```
 
+### 4. Deploy Services and Deployments
+From the root directory:
+```bash
+kubectl apply -f deployments/
+kubectl apply -f services/
+```
+Check status:
+```bash
+kubectl get pods
+kubectl get services
+```
+
+### 5. Testing Services
+- A. Port-forward Service
+```bash
+kubectl port-forward svc/servicename PORT:SVCPORT
+```
+Then open your browser:
+```bash
+http://localhost:PORT/
+```
+EXAMPLE
+Gateway Service
+```bash
+kubectl port-forward svc/gateway-service 3003:3003
+```
+open your browser and hit "http://localhost:3003/"
+
+- B. Inter-service Communication (Inside Pod)
+```bash
+kubectl exec -it <some-pod-name> -- sh
+curl http://user-service:3000/health
+curl http://product-service:3001/health
+```
+
+### 6. (Optional) Ingress Setup
+If you attempted the bonus task:
+```bash
+kubectl apply -f ingress/
+minikube tunnel
+```
+Then add this to your /etc/hosts file:
+```bash
+127.0.0.1 microservices.local
+```
+Test
+```bash
+http://microservices.local/api/users
+```
 ---
 
-### **Order Service**
-- **Base URL:** `http://107.21.154.191:3002`
-- **Endpoints:**
-  - **List Orders:**  
-    ```
-    curl http://107.21.154.191:3002/orders
-    ```
-    Or open in your browser: [http://107.21.154.191:3002/orders](http://107.21.154.191:3002/orders)
-
-    <img width="430" alt="image" src="https://github.com/user-attachments/assets/fce958d2-e20d-44bc-9a7f-b9b24c0393a4" />
-
-
+## Troubleshooting Tips<br>
+- Pod CrashLoopBackOff: Check logs with kubectl logs <pod-name><br>
+- Image Pull Error: Ensure your image name is correct and pushed to Docker Hub<br>
+- Service Unreachable: Verify correct port and service name in your requests<br>
 ---
 
-### **Gateway Service**
-- **Base URL:** `http://107.21.154.191:3003/api`
-- **Endpoints:**
-  - **Users:**  
-    ```
-    curl http://107.21.154.191:3003/api/users
-    ```
-<img width="427" alt="image" src="https://github.com/user-attachments/assets/b1122566-0041-40ac-bfa6-8c9faf705ea3" />
-
-    
-  - **Products:**  
-    ```
-    curl http://107.21.154.191:3003/api/products
-    ```
-<img width="417" alt="image" src="https://github.com/user-attachments/assets/537a55a4-8ac2-4d2f-94ec-5246a2695069" />
-
-    
-  - **Orders:**  
-    ```
-    curl http://107.21.154.191:3003/api/orders
-    ```
-<img width="352" alt="image" src="https://github.com/user-attachments/assets/18392da4-1d2c-4d6c-b257-0e034de2408a" />
-
-
-
+## Screenshots
+- Docker images snapshot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Repository.png" /><br>
+- Minikube running snapshot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/minikube_start.png" /><br>
+- Applying deployment snapshot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+- Applying services snapshot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+- kubectl services status snapshot<br>
+<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+- kubectl pods status snapshot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+- Product service snaphsot<br>
+<img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+![image](https://github.com/user-attachments/assets/84aa3374-79ad-4a58-abe4-cdc2f1362de7)<br>
+- User service snaphsot<br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+<img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/" /><br>
+- Gateway service snaphsot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+- Order service snaphsot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+- Inter-service Communication (Inside Pod) snapshot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+- (Optional) Ingress Snapshot<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/)<br>
 ---
 
-## Instructions
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up
-   ```
-<img width="854" alt="image" src="https://github.com/user-attachments/assets/d25f9129-5514-430a-b836-ebc544a573c7" />
-<img width="268" alt="image" src="https://github.com/user-attachments/assets/2b49c94a-1dd3-4f1a-bdd0-04a10c1921ac" />
-
-
-2. Once the services are running, use the above endpoints to verify the functionality.
-
-Happy testing!
+## Author & Credits
+- Assignment by Tanuj Bhatia<br>
+- Container registry: tanujbhatia24
+---
