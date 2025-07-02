@@ -23,7 +23,7 @@ COPY package.json .
 RUN npm install
 COPY . .
 EXPOSE 3002
-CMD [ "npm", "start" ]
+CMD [ "node", "app.js" ]
 ```
 Repeat for each service.
 
@@ -115,49 +115,51 @@ http://microservices.local/api/users
 - Minikube running snapshot<br>
 <img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/minikube_start.png" /><br>
 
-- Applying deployment snapshot<br><br>
+- Docker build and Push order Service<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-o.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-order.png)<br>
+
+- Docker build and Push product Service<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-p.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-product.png)<br>
+
+- Docker build and Push user Service <br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-u.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-user.png)<br>
+
+- Docker build and Push gateway Service<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-g.png)<br>
+![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-gateway.png)<br>
+
+- Applying deployment snapshot<br>
 <img  alt="image" src="https://github.com/user-attachments/assets/927780c9-8a59-449c-b94d-0f8a56e41248" /><br>
 
-- Applying services snapshot<br><br>
+- Applying services snapshot<br>
 <img  alt="image" src="https://github.com/user-attachments/assets/040694c8-882c-4871-bb39-dc03b304f245" /><br>
 
-- kubectl services status snapshot<br><br>
+- kubectl services status snapshot<br>
 <img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/kubectl-get-service.png" /><br>
 
 - kubectl pods status snapshot<br><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/kubectl-get-pods.png)<br>
 
-- minikube Product service snaphsot<br><br>
+- minikube Product service snaphsot<br>
 <img alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/product-service.png" /><br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/product-output.png)<br>
 
-- minikube User service snaphsot<br><br>
+- minikube User service snaphsot<br>
 <img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/user-service.png" /><br>
 <img  alt="image" src="https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/user-output.png" /><br>
 
-- minikube Gateway service snaphsot<br><br>
+- minikube Gateway service snaphsot<br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/gateway-service.png)<br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/gateway-output.png)<br>
 
-- minikube Order service snaphsot<br><br>
+- minikube Order service snaphsot<br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/order-service.png)<br>
 ![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/order-output.png)<br>
 
-- Dokcer build and Push order Service <br><br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-o.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-order.png)<br>
 
-- Dokcer build and Push product Service <br><br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-p.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-product.png)<br>
-
-- Dokcer build and Push user Service <br><br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-u.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-user.png)<br>
-
-- Dokcer build and Push gateway Service <br><br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Docker-build-g.png)<br>
-![image](https://github.com/praysap/Skill-Test2-Container-Orchestration/blob/main/screenshot/Dokcer-gateway.png)<br>
 ---
 
 
